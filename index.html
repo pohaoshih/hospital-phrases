@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
@@ -14,6 +15,7 @@
     --accent3: #c0392b;
     --accent4: #7b52ab;
     --accent5: #d97b06;
+    --pin: #f59e0b;
     --text: #1a2332;
     --text-sub: #5a6a7e;
     --border: #dde4ed;
@@ -30,179 +32,170 @@
     padding-bottom: 60px;
   }
 
-  header {
-    background: linear-gradient(135deg, #0d6e9a 0%, #0a4f70 100%);
-    color: white;
-    padding: 18px 16px 14px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    box-shadow: 0 3px 20px rgba(13,110,154,0.3);
-  }
-  header h1 { font-family: 'DM Serif Display', serif; font-size: 1.2rem; }
-  header p { font-size: 0.72rem; opacity: 0.7; margin-top: 2px; font-weight: 300; }
+/* ── Header ── */
+header {
+background: linear-gradient(135deg, #0d6e9a 0%, #0a4f70 100%);
+color: white;
+padding: 18px 16px 14px;
+position: sticky; top: 0; z-index: 100;
+box-shadow: 0 3px 20px rgba(13,110,154,0.3);
+}
+header h1 { font-family: ‘DM Serif Display’, serif; font-size: 1.2rem; }
+header p  { font-size: 0.72rem; opacity: 0.7; margin-top: 2px; font-weight: 300; }
 
-  /* Language bar */
-  .lang-bar {
-    background: white;
-    border-bottom: 1px solid var(--border);
-    padding: 10px 12px;
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    position: sticky;
-    top: 68px;
-    z-index: 99;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
-  }
-  .lang-bar::-webkit-scrollbar { display: none; }
-  .lang-btn {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    padding: 7px 13px;
-    border-radius: 50px;
-    border: 1.5px solid var(--border);
-    background: white;
-    color: var(--text-sub);
-    font-size: 0.78rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: all 0.18s;
-    font-family: 'DM Sans', sans-serif;
-  }
-  .lang-btn .flag { font-size: 1.05rem; }
-  .lang-btn.active-en  { background:#1565c0; color:white; border-color:#1565c0; box-shadow:0 2px 10px rgba(21,101,192,0.3); }
-  .lang-btn.active-fil { background:#c62828; color:white; border-color:#c62828; box-shadow:0 2px 10px rgba(198,40,40,0.3); }
-  .lang-btn.active-vi  { background:#2e7d32; color:white; border-color:#2e7d32; box-shadow:0 2px 10px rgba(46,125,50,0.3); }
-  .lang-btn.active-th  { background:#4527a0; color:white; border-color:#4527a0; box-shadow:0 2px 10px rgba(69,39,160,0.3); }
-  .lang-btn.active-id  { background:#e65100; color:white; border-color:#e65100; box-shadow:0 2px 10px rgba(230,81,0,0.3); }
+/* ── Lang bar ── */
+.lang-bar {
+background: white; border-bottom: 1px solid var(–border);
+padding: 10px 12px; display: flex; gap: 6px;
+overflow-x: auto; scrollbar-width: none;
+position: sticky; top: 68px; z-index: 99;
+box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.lang-bar::-webkit-scrollbar { display: none; }
+.lang-btn {
+flex-shrink: 0; display: flex; align-items: center; gap: 5px;
+padding: 7px 13px; border-radius: 50px;
+border: 1.5px solid var(–border); background: white;
+color: var(–text-sub); font-size: 0.78rem; font-weight: 500;
+cursor: pointer; transition: all 0.18s; font-family: ‘DM Sans’, sans-serif;
+}
+.lang-btn .flag { font-size: 1.05rem; }
+.lang-btn.active-en  { background:#1565c0; color:white; border-color:#1565c0; box-shadow:0 2px 10px rgba(21,101,192,0.3); }
+.lang-btn.active-fil { background:#c62828; color:white; border-color:#c62828; box-shadow:0 2px 10px rgba(198,40,40,0.3); }
+.lang-btn.active-vi  { background:#2e7d32; color:white; border-color:#2e7d32; box-shadow:0 2px 10px rgba(46,125,50,0.3); }
+.lang-btn.active-th  { background:#4527a0; color:white; border-color:#4527a0; box-shadow:0 2px 10px rgba(69,39,160,0.3); }
+.lang-btn.active-id  { background:#e65100; color:white; border-color:#e65100; box-shadow:0 2px 10px rgba(230,81,0,0.3); }
 
-  /* Search */
-  .search-wrap {
-    position: sticky;
-    top: 116px;
-    z-index: 98;
-    background: var(--bg);
-    padding: 12px 14px 6px;
-  }
-  .search-inner { position: relative; }
-  .search-wrap input {
-    width: 100%;
-    padding: 10px 14px 10px 38px;
-    border: 1.5px solid var(--border);
-    border-radius: 50px;
-    font-size: 0.88rem;
-    font-family: 'DM Sans', sans-serif;
-    background: white;
-    outline: none;
-    color: var(--text);
-    box-shadow: var(--shadow);
-    transition: border-color 0.2s;
-  }
-  .search-wrap input:focus { border-color: var(--accent); }
-  .search-icon {
-    position: absolute; left: 13px; top: 50%;
-    transform: translateY(-50%);
-    color: var(--text-sub); font-size: 0.95rem; pointer-events: none;
-  }
+/* ── Search ── */
+.search-wrap {
+position: sticky; top: 116px; z-index: 98;
+background: var(–bg); padding: 12px 14px 6px;
+}
+.search-inner { position: relative; }
+.search-wrap input {
+width: 100%; padding: 10px 14px 10px 38px;
+border: 1.5px solid var(–border); border-radius: 50px;
+font-size: 0.88rem; font-family: ‘DM Sans’, sans-serif;
+background: white; outline: none; color: var(–text);
+box-shadow: var(–shadow); transition: border-color 0.2s;
+}
+.search-wrap input:focus { border-color: var(–accent); }
+.search-icon {
+position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+color: var(–text-sub); font-size: 0.95rem; pointer-events: none;
+}
 
-  /* Category tabs */
-  .tabs {
-    display: flex; gap: 7px;
-    padding: 8px 14px 10px;
-    overflow-x: auto; scrollbar-width: none;
-  }
-  .tabs::-webkit-scrollbar { display: none; }
-  .tab {
-    flex-shrink: 0;
-    padding: 5px 12px;
-    border-radius: 50px;
-    font-size: 0.75rem; font-weight: 500;
-    cursor: pointer;
-    border: 1.5px solid transparent;
-    background: white; color: var(--text-sub);
-    transition: all 0.18s;
-    box-shadow: 0 1px 5px rgba(0,0,0,0.06);
-  }
-  .tab.active { background: var(--accent); color: white; border-color: var(--accent); box-shadow: 0 2px 8px rgba(13,110,154,0.28); }
+/* ── Tabs ── */
+.tabs {
+display: flex; gap: 7px; padding: 8px 14px 10px;
+overflow-x: auto; scrollbar-width: none;
+}
+.tabs::-webkit-scrollbar { display: none; }
+.tab {
+flex-shrink: 0; padding: 5px 12px; border-radius: 50px;
+font-size: 0.75rem; font-weight: 500; cursor: pointer;
+border: 1.5px solid transparent; background: white; color: var(–text-sub);
+transition: all 0.18s; box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+}
+.tab.active { background: var(–accent); color: white; border-color: var(–accent); box-shadow: 0 2px 8px rgba(13,110,154,0.28); }
+.tab.pin-tab { border-color: var(–pin); color: var(–pin); }
+.tab.pin-tab.active { background: var(–pin); color: white; border-color: var(–pin); box-shadow: 0 2px 8px rgba(245,158,11,0.3); }
 
-  /* Sections */
-  .section { padding: 0 14px 4px; }
-  .section-header { display: flex; align-items: center; gap: 9px; padding: 12px 0 8px; }
-  .section-icon { width: 32px; height: 32px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
-  .section-title { font-family: 'DM Serif Display', serif; font-size: 1rem; color: var(--text); }
-  .section-count { margin-left: auto; font-size: 0.7rem; color: var(--text-sub); background: var(--border); padding: 2px 8px; border-radius: 20px; }
+/* ── Pinned section ── */
+.pinned-section {
+margin: 10px 14px 0;
+background: #fffbeb;
+border: 1.5px solid #fde68a;
+border-radius: var(–radius);
+padding: 12px 14px 6px;
+}
+.pinned-header {
+display: flex; align-items: center; gap: 8px;
+margin-bottom: 10px;
+}
+.pinned-title {
+font-family: ‘DM Serif Display’, serif;
+font-size: 0.95rem; color: #92400e;
+display: flex; align-items: center; gap: 6px;
+}
+.pinned-count {
+margin-left: auto; font-size: 0.7rem; color: #b45309;
+background: #fde68a; padding: 2px 8px; border-radius: 20px;
+}
+.pinned-empty {
+text-align: center; color: #b45309; opacity: 0.6;
+font-size: 0.8rem; padding: 8px 0 12px;
+}
 
-  /* Phrase card */
-  .phrase-card {
-    background: var(--surface);
-    border-radius: var(--radius);
-    padding: 13px 14px 12px;
-    margin-bottom: 9px;
-    box-shadow: var(--shadow);
-    border: 1px solid var(--border);
-    position: relative;
-    overflow: hidden;
-  }
-  .phrase-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:3.5px; border-radius:3px 0 0 3px; }
-  .cat-0::before { background:#1565c0; }
-  .cat-1::before { background:#1a9e72; }
-  .cat-2::before { background:#c0392b; }
-  .cat-3::before { background:#7b52ab; }
-  .cat-4::before { background:#d97b06; }
-  .cat-5::before { background:#e91e63; }
-  .cat-6::before { background:#00897b; }
-  .icon-0 { background:#eaf4fb; } .icon-1 { background:#e6f7f2; } .icon-2 { background:#fdecea; }
-  .icon-3 { background:#f3eefb; } .icon-4 { background:#fef3e2; } .icon-5 { background:#fce4ec; } .icon-6 { background:#e0f2f1; }
+/* ── Sections ── */
+.section { padding: 0 14px 4px; }
+.section-header { display: flex; align-items: center; gap: 9px; padding: 12px 0 8px; }
+.section-icon { width: 32px; height: 32px; border-radius: 9px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+.section-title { font-family: ‘DM Serif Display’, serif; font-size: 1rem; color: var(–text); }
+.section-count { margin-left: auto; font-size: 0.7rem; color: var(–text-sub); background: var(–border); padding: 2px 8px; border-radius: 20px; }
 
-  .lang-badge {
-    display: inline-block; font-size: 0.62rem; font-weight: 600;
-    padding: 1px 7px; border-radius: 20px; margin-bottom: 5px;
-    letter-spacing: 0.04em;
-  }
-  .badge-en  { background:#e3eeff; color:#1565c0; }
-  .badge-fil { background:#fdecea; color:#c62828; }
-  .badge-vi  { background:#e8f5e9; color:#2e7d32; }
-  .badge-th  { background:#ede7f6; color:#4527a0; }
-  .badge-id  { background:#fff3e0; color:#e65100; }
+/* ── Phrase card ── */
+.phrase-card {
+background: var(–surface); border-radius: var(–radius);
+padding: 13px 14px 12px; margin-bottom: 9px;
+box-shadow: var(–shadow); border: 1px solid var(–border);
+position: relative; overflow: hidden;
+transition: border-color 0.2s, box-shadow 0.2s;
+}
+.phrase-card.is-pinned {
+border-color: #fcd34d;
+box-shadow: 0 2px 16px rgba(245,158,11,0.15);
+}
+.phrase-card::before { content:’’; position:absolute; left:0; top:0; bottom:0; width:3.5px; border-radius:3px 0 0 3px; }
+.cat-0::before { background:#1565c0; } .cat-1::before { background:#1a9e72; }
+.cat-2::before { background:#c0392b; } .cat-3::before { background:#7b52ab; }
+.cat-4::before { background:#d97b06; } .cat-5::before { background:#e91e63; }
+.cat-6::before { background:#00897b; } .pinned-card::before { background:#f59e0b; }
+.icon-0{background:#eaf4fb;} .icon-1{background:#e6f7f2;} .icon-2{background:#fdecea;}
+.icon-3{background:#f3eefb;} .icon-4{background:#fef3e2;} .icon-5{background:#fce4ec;} .icon-6{background:#e0f2f1;}
 
-  .phrase-main {
-    font-size: 0.9rem; font-weight: 600; color: var(--text);
-    line-height: 1.5; padding-right: 66px;
-  }
-  .phrase-zh {
-    font-size: 0.73rem; color: var(--text-sub);
-    margin-top: 5px; line-height: 1.35;
-  }
+.lang-badge {
+display: inline-block; font-size: 0.62rem; font-weight: 600;
+padding: 1px 7px; border-radius: 20px; margin-bottom: 5px; letter-spacing: 0.04em;
+}
+.badge-en{background:#e3eeff;color:#1565c0;} .badge-fil{background:#fdecea;color:#c62828;}
+.badge-vi{background:#e8f5e9;color:#2e7d32;} .badge-th{background:#ede7f6;color:#4527a0;}
+.badge-id{background:#fff3e0;color:#e65100;}
 
-  /* Buttons */
-  .btn-row { position: absolute; right: 10px; top: 10px; display: flex; gap: 4px; }
-  .action-btn {
-    width: 27px; height: 27px; border-radius: 8px;
-    background: var(--tag-bg); border: none; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.8rem; transition: background 0.15s; color: var(--accent);
-  }
-  .action-btn:hover { background: #d0e9f7; }
-  .action-btn.copied { background: #d4f5e9; color: var(--accent2); }
-  .action-btn.speaking { background: #fde8d0; color: var(--accent5); }
+.phrase-main { font-size: 0.9rem; font-weight: 600; color: var(–text); line-height: 1.5; padding-right: 90px; }
+.phrase-zh   { font-size: 0.73rem; color: var(–text-sub); margin-top: 5px; line-height: 1.35; }
 
-  /* Toast */
-  .toast {
-    position: fixed; bottom: 20px; left: 50%;
-    transform: translateX(-50%) translateY(20px);
-    background: #1a2332; color: white;
-    padding: 9px 18px; border-radius: 50px;
-    font-size: 0.8rem; opacity: 0; transition: all 0.28s;
-    pointer-events: none; z-index: 9999; white-space: nowrap;
-  }
-  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
-  .divider { height: 1px; background: var(--border); margin: 4px 14px 0; }
-  .no-result { text-align: center; color: var(--text-sub); padding: 40px 20px; font-size: 0.88rem; }
+/* ── Buttons ── */
+.btn-row { position: absolute; right: 10px; top: 10px; display: flex; gap: 4px; }
+.action-btn {
+width: 27px; height: 27px; border-radius: 8px;
+background: var(–tag-bg); border: none; cursor: pointer;
+display: flex; align-items: center; justify-content: center;
+font-size: 0.82rem; transition: background 0.15s, transform 0.15s; color: var(–accent);
+}
+.action-btn:active { transform: scale(0.88); }
+.action-btn:hover  { background: #d0e9f7; }
+.action-btn.copied   { background: #d4f5e9; color: var(–accent2); }
+.action-btn.speaking { background: #fde8d0; color: var(–accent5); }
+/* Pin button */
+.pin-btn { background: #fef9ee; color: #d97706; }
+.pin-btn:hover { background: #fef3c7; }
+.pin-btn.pinned { background: #fde68a; color: #92400e; }
+
+/* ── Toast ── */
+.toast {
+position: fixed; bottom: 20px; left: 50%;
+transform: translateX(-50%) translateY(20px);
+background: #1a2332; color: white;
+padding: 9px 18px; border-radius: 50px;
+font-size: 0.8rem; opacity: 0; transition: all 0.28s;
+pointer-events: none; z-index: 9999; white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+.divider { height: 1px; background: var(–border); margin: 4px 14px 0; }
+.no-result { text-align: center; color: var(–text-sub); padding: 40px 20px; font-size: 0.88rem; }
 </style>
+
 </head>
 <body>
 
@@ -212,11 +205,11 @@
 </header>
 
 <div class="lang-bar">
-  <button class="lang-btn active-en" data-lang="en" onclick="setLang('en',this)"><span class="flag">🇺🇸</span>英文</button>
-  <button class="lang-btn" data-lang="fil" onclick="setLang('fil',this)"><span class="flag">🇵🇭</span>菲律賓文</button>
-  <button class="lang-btn" data-lang="vi" onclick="setLang('vi',this)"><span class="flag">🇻🇳</span>越南文</button>
-  <button class="lang-btn" data-lang="th" onclick="setLang('th',this)"><span class="flag">🇹🇭</span>泰文</button>
-  <button class="lang-btn" data-lang="id" onclick="setLang('id',this)"><span class="flag">🇮🇩</span>印尼文</button>
+  <button class="lang-btn active-en" data-lang="en"  onclick="setLang('en',this)"><span class="flag">🇺🇸</span>英文</button>
+  <button class="lang-btn"           data-lang="fil" onclick="setLang('fil',this)"><span class="flag">🇵🇭</span>菲律賓文</button>
+  <button class="lang-btn"           data-lang="vi"  onclick="setLang('vi',this)"><span class="flag">🇻🇳</span>越南文</button>
+  <button class="lang-btn"           data-lang="th"  onclick="setLang('th',this)"><span class="flag">🇹🇭</span>泰文</button>
+  <button class="lang-btn"           data-lang="id"  onclick="setLang('id',this)"><span class="flag">🇮🇩</span>印尼文</button>
 </div>
 
 <div class="search-wrap">
@@ -227,303 +220,145 @@
 </div>
 
 <div class="tabs" id="tabsContainer"></div>
+<div id="pinnedSection"></div>
 <div id="content"></div>
 <div class="toast" id="toast"></div>
 
 <script>
+// ── Lang meta ────────────────────────────────────────────────────────────────
 const langMeta = {
-  en:  { label:"English",           flag:"🇺🇸", tts:"en-US",  badge:"badge-en"  },
-  fil: { label:"Filipino",          flag:"🇵🇭", tts:"fil-PH", badge:"badge-fil" },
-  vi:  { label:"Tiếng Việt",        flag:"🇻🇳", tts:"vi-VN",  badge:"badge-vi"  },
-  th:  { label:"ภาษาไทย",            flag:"🇹🇭", tts:"th-TH",  badge:"badge-th"  },
-  id:  { label:"Bahasa Indonesia",  flag:"🇮🇩", tts:"id-ID",  badge:"badge-id"  },
+  en:  { label:"English",          flag:"🇺🇸", tts:"en-US",  badge:"badge-en"  },
+  fil: { label:"Filipino",         flag:"🇵🇭", tts:"fil-PH", badge:"badge-fil" },
+  vi:  { label:"Tiếng Việt",       flag:"🇻🇳", tts:"vi-VN",  badge:"badge-vi"  },
+  th:  { label:"ภาษาไทย",           flag:"🇹🇭", tts:"th-TH",  badge:"badge-th"  },
+  id:  { label:"Bahasa Indonesia", flag:"🇮🇩", tts:"id-ID",  badge:"badge-id"  },
 };
 
+// ── Data ─────────────────────────────────────────────────────────────────────
 const data = [
   { cat:"掛號 / 接待", icon:"📋", phrases:[
-    { zh:"早安/午安，請問有什麼需要幫忙？",
-      en:"Good morning / Good afternoon. How can I help you?",
-      fil:"Magandang umaga / hapon. Paano kita matutulungan?",
-      vi:"Chào buổi sáng / buổi chiều. Tôi có thể giúp gì cho bạn?",
-      th:"สวัสดีครับ/ค่ะ ช่วยอะไรได้บ้างครับ/ค่ะ?",
-      id:"Selamat pagi / siang. Ada yang bisa saya bantu?" },
-    { zh:"您今天有預約嗎？",
-      en:"Do you have an appointment today?",
-      fil:"Mayroon ka bang appointment ngayon?",
-      vi:"Hôm nay bạn có hẹn trước không?",
-      th:"คุณมีนัดล่วงหน้าวันนี้ไหมครับ/ค่ะ?",
-      id:"Apakah Anda sudah membuat janji hari ini?" },
-    { zh:"請問您的姓名？",
-      en:"May I have your name, please?",
-      fil:"Puwede ko bang malaman ang iyong pangalan?",
-      vi:"Cho tôi biết tên của bạn được không?",
-      th:"ขอทราบชื่อของคุณได้ไหมครับ/ค่ะ?",
-      id:"Boleh saya tahu nama Anda?" },
-    { zh:"可以請您出示身分證或健保卡嗎？",
-      en:"May I see your ID or health insurance card?",
-      fil:"Maaari ko bang makita ang iyong ID o health insurance card?",
-      vi:"Bạn có thể cho tôi xem CMND hoặc thẻ bảo hiểm y tế không?",
-      th:"ขอดูบัตรประชาชนหรือบัตรประกันสุขภาพของคุณได้ไหมครับ/ค่ะ?",
-      id:"Boleh saya lihat KTP atau kartu asuransi kesehatan Anda?" },
-    { zh:"您今天要看哪個科別？",
-      en:"Which department are you here to see today?",
-      fil:"Aling departamento ang gusto mong puntahan ngayon?",
-      vi:"Hôm nay bạn muốn khám ở khoa nào?",
-      th:"วันนี้คุณต้องการพบแผนกไหนครับ/ค่ะ?",
-      id:"Hari ini Anda ingin ke poli/bagian mana?" },
-    { zh:"請您填寫這張掛號單。",
-      en:"Please fill in this registration form.",
-      fil:"Pakipunan ang registration form na ito.",
-      vi:"Vui lòng điền vào mẫu đăng ký này.",
-      th:"กรุณากรอกแบบฟอร์มลงทะเบียนนี้ด้วยครับ/ค่ะ",
-      id:"Mohon isi formulir pendaftaran ini." },
-    { zh:"您的號碼牌是[號碼]，請先坐下等候。",
-      en:"Your queue number is [number]. Please have a seat and wait.",
-      fil:"Ang iyong numero sa pila ay [number]. Mangyaring umupo at maghintay.",
-      vi:"Số thứ tự của bạn là [số]. Vui lòng ngồi xuống và chờ.",
-      th:"หมายเลขคิวของคุณคือ [หมายเลข] กรุณานั่งรอได้เลยครับ/ค่ะ",
-      id:"Nomor antrean Anda adalah [nomor]. Silakan duduk dan menunggu." },
-    { zh:"醫師很快就會看診。",
-      en:"The doctor will see you shortly.",
-      fil:"Malalaman ka ng doktor sa ilang sandali.",
-      vi:"Bác sĩ sẽ gặp bạn ngay.",
-      th:"แพทย์จะพบคุณในไม่ช้าครับ/ค่ะ",
-      id:"Dokter akan segera menemui Anda." },
+    { zh:"早安/午安，請問有什麼需要幫忙？", en:"Good morning / Good afternoon. How can I help you?", fil:"Magandang umaga / hapon. Paano kita matutulungan?", vi:"Chào buổi sáng / buổi chiều. Tôi có thể giúp gì cho bạn?", th:"สวัสดีครับ/ค่ะ ช่วยอะไรได้บ้างครับ/ค่ะ?", id:"Selamat pagi / siang. Ada yang bisa saya bantu?" },
+    { zh:"您今天有預約嗎？", en:"Do you have an appointment today?", fil:"Mayroon ka bang appointment ngayon?", vi:"Hôm nay bạn có hẹn trước không?", th:"คุณมีนัดล่วงหน้าวันนี้ไหมครับ/ค่ะ?", id:"Apakah Anda sudah membuat janji hari ini?" },
+    { zh:"請問您的姓名？", en:"May I have your name, please?", fil:"Puwede ko bang malaman ang iyong pangalan?", vi:"Cho tôi biết tên của bạn được không?", th:"ขอทราบชื่อของคุณได้ไหมครับ/ค่ะ?", id:"Boleh saya tahu nama Anda?" },
+    { zh:"可以請您出示身分證或健保卡嗎？", en:"May I see your ID or health insurance card?", fil:"Maaari ko bang makita ang iyong ID o health insurance card?", vi:"Bạn có thể cho tôi xem CMND hoặc thẻ bảo hiểm y tế không?", th:"ขอดูบัตรประชาชนหรือบัตรประกันสุขภาพของคุณได้ไหมครับ/ค่ะ?", id:"Boleh saya lihat KTP atau kartu asuransi kesehatan Anda?" },
+    { zh:"您今天要看哪個科別？", en:"Which department are you here to see today?", fil:"Aling departamento ang gusto mong puntahan ngayon?", vi:"Hôm nay bạn muốn khám ở khoa nào?", th:"วันนี้คุณต้องการพบแผนกไหนครับ/ค่ะ?", id:"Hari ini Anda ingin ke poli/bagian mana?" },
+    { zh:"請您填寫這張掛號單。", en:"Please fill in this registration form.", fil:"Pakipunan ang registration form na ito.", vi:"Vui lòng điền vào mẫu đăng ký này.", th:"กรุณากรอกแบบฟอร์มลงทะเบียนนี้ด้วยครับ/ค่ะ", id:"Mohon isi formulir pendaftaran ini." },
+    { zh:"您的號碼牌是[號碼]，請先坐下等候。", en:"Your queue number is [number]. Please have a seat and wait.", fil:"Ang iyong numero sa pila ay [number]. Mangyaring umupo at maghintay.", vi:"Số thứ tự của bạn là [số]. Vui lòng ngồi xuống và chờ.", th:"หมายเลขคิวของคุณคือ [หมายเลข] กรุณานั่งรอได้เลยครับ/ค่ะ", id:"Nomor antrean Anda adalah [nomor]. Silakan duduk dan menunggu." },
+    { zh:"醫師很快就會看診。", en:"The doctor will see you shortly.", fil:"Malalaman ka ng doktor sa ilang sandali.", vi:"Bác sĩ sẽ gặp bạn ngay.", th:"แพทย์จะพบคุณในไม่ช้าครับ/ค่ะ", id:"Dokter akan segera menemui Anda." },
   ]},
   { cat:"緊急 / 急診", icon:"🚨", phrases:[
-    { zh:"這是緊急狀況嗎？",
-      en:"Is this an emergency?",
-      fil:"Emergency ba ito?",
-      vi:"Đây có phải trường hợp khẩn cấp không?",
-      th:"นี่เป็นกรณีฉุกเฉินไหมครับ/ค่ะ?",
-      id:"Apakah ini keadaan darurat?" },
-    { zh:"請立刻前往急診室。",
-      en:"Please go to the emergency room right away.",
-      fil:"Mangyaring pumunta agad sa emergency room.",
-      vi:"Vui lòng đến phòng cấp cứu ngay.",
-      th:"กรุณาไปห้องฉุกเฉินทันทีครับ/ค่ะ",
-      id:"Silakan pergi ke IGD segera." },
-    { zh:"您現在有疼痛感嗎？",
-      en:"Are you in pain right now?",
-      fil:"Mayroon ka bang nararamdamang sakit ngayon?",
-      vi:"Bạn có đang bị đau không?",
-      th:"ตอนนี้คุณรู้สึกเจ็บปวดไหมครับ/ค่ะ?",
-      id:"Apakah Anda sedang merasakan nyeri sekarang?" },
-    { zh:"疼痛程度從1到10，您覺得是幾分？",
-      en:"On a scale of 1 to 10, how bad is the pain?",
-      fil:"Sa sukat na 1 hanggang 10, gaano katindi ang sakit?",
-      vi:"Theo thang điểm 1 đến 10, mức độ đau của bạn là bao nhiêu?",
-      th:"ในระดับ 1 ถึง 10 ความเจ็บปวดอยู่ที่เท่าไรครับ/ค่ะ?",
-      id:"Dalam skala 1 sampai 10, seberapa parah sakitnya?" },
-    { zh:"請保持冷靜，協助馬上就來。",
-      en:"Please stay calm. Help is on the way.",
-      fil:"Mangyaring manatiling kalmado. Paparating na ang tulong.",
-      vi:"Xin hãy bình tĩnh. Sự trợ giúp đang trên đường đến.",
-      th:"กรุณาใจเย็นๆ ความช่วยเหลือกำลังมาครับ/ค่ะ",
-      id:"Harap tetap tenang. Bantuan sedang dalam perjalanan." },
-    { zh:"您有藥物過敏嗎？",
-      en:"Do you have any allergies to medications?",
-      fil:"Mayroon ka bang allergy sa anumang gamot?",
-      vi:"Bạn có bị dị ứng với thuốc nào không?",
-      th:"คุณแพ้ยาชนิดใดบ้างไหมครับ/ค่ะ?",
-      id:"Apakah Anda memiliki alergi terhadap obat-obatan?" },
+    { zh:"這是緊急狀況嗎？", en:"Is this an emergency?", fil:"Emergency ba ito?", vi:"Đây có phải trường hợp khẩn cấp không?", th:"นี่เป็นกรณีฉุกเฉินไหมครับ/ค่ะ?", id:"Apakah ini keadaan darurat?" },
+    { zh:"請立刻前往急診室。", en:"Please go to the emergency room right away.", fil:"Mangyaring pumunta agad sa emergency room.", vi:"Vui lòng đến phòng cấp cứu ngay.", th:"กรุณาไปห้องฉุกเฉินทันทีครับ/ค่ะ", id:"Silakan pergi ke IGD segera." },
+    { zh:"您現在有疼痛感嗎？", en:"Are you in pain right now?", fil:"Mayroon ka bang nararamdamang sakit ngayon?", vi:"Bạn có đang bị đau không?", th:"ตอนนี้คุณรู้สึกเจ็บปวดไหมครับ/ค่ะ?", id:"Apakah Anda sedang merasakan nyeri sekarang?" },
+    { zh:"疼痛程度從1到10，您覺得是幾分？", en:"On a scale of 1 to 10, how bad is the pain?", fil:"Sa sukat na 1 hanggang 10, gaano katindi ang sakit?", vi:"Theo thang điểm 1 đến 10, mức độ đau của bạn là bao nhiêu?", th:"ในระดับ 1 ถึง 10 ความเจ็บปวดอยู่ที่เท่าไรครับ/ค่ะ?", id:"Dalam skala 1 sampai 10, seberapa parah sakitnya?" },
+    { zh:"請保持冷靜，協助馬上就來。", en:"Please stay calm. Help is on the way.", fil:"Mangyaring manatiling kalmado. Paparating na ang tulong.", vi:"Xin hãy bình tĩnh. Sự trợ giúp đang trên đường đến.", th:"กรุณาใจเย็นๆ ความช่วยเหลือกำลังมาครับ/ค่ะ", id:"Harap tetap tenang. Bantuan sedang dalam perjalanan." },
+    { zh:"您有藥物過敏嗎？", en:"Do you have any allergies to medications?", fil:"Mayroon ka bang allergy sa anumang gamot?", vi:"Bạn có bị dị ứng với thuốc nào không?", th:"คุณแพ้ยาชนิดใดบ้างไหมครับ/ค่ะ?", id:"Apakah Anda memiliki alergi terhadap obat-obatan?" },
   ]},
   { cat:"等候 / 說明", icon:"⏳", phrases:[
-    { zh:"抱歉讓您久等，大約還需要[X]分鐘。",
-      en:"I'm sorry for the wait. It will be about [X] more minutes.",
-      fil:"Paumanhin sa paghihintay. Mga [X] pang minuto.",
-      vi:"Xin lỗi vì đã để bạn chờ. Còn khoảng [X] phút nữa.",
-      th:"ขอโทษที่ต้องรอนานครับ/ค่ะ อีกประมาณ [X] นาที",
-      id:"Maaf atas penantiannya. Sekitar [X] menit lagi." },
-    { zh:"醫師目前正在看其他病患。",
-      en:"The doctor is currently with another patient.",
-      fil:"Ang doktor ay kasalukuyang kasama ang ibang pasyente.",
-      vi:"Bác sĩ hiện đang khám cho bệnh nhân khác.",
-      th:"ขณะนี้แพทย์กำลังดูแลผู้ป่วยรายอื่นอยู่ครับ/ค่ะ",
-      id:"Dokter sedang menangani pasien lain saat ini." },
-    { zh:"您前面還有[人數]位病患。",
-      en:"There are [number] patients ahead of you.",
-      fil:"May [number] pang pasyente bago ka.",
-      vi:"Còn [số] bệnh nhân trước bạn.",
-      th:"ยังมีผู้ป่วยอีก [จำนวน] คนก่อนถึงคุณครับ/ค่ะ",
-      id:"Masih ada [jumlah] pasien di depan Anda." },
-    { zh:"請在候診區等候，我們會叫您的名字。",
-      en:"Please wait in the waiting area. We will call your name.",
-      fil:"Mangyaring maghintay sa waiting area. Tatawagin namin ang iyong pangalan.",
-      vi:"Vui lòng chờ ở khu vực chờ. Chúng tôi sẽ gọi tên bạn.",
-      th:"กรุณารอในบริเวณรอครับ/ค่ะ เราจะเรียกชื่อคุณ",
-      id:"Mohon tunggu di ruang tunggu. Kami akan memanggil nama Anda." },
-    { zh:"請不要離開，我們很快就會叫到您。",
-      en:"Please do not leave. We will call you soon.",
-      fil:"Mangyaring huwag umalis. Tatawagin ka namin sa lalong madaling panahon.",
-      vi:"Vui lòng đừng rời đi. Chúng tôi sẽ gọi bạn sớm thôi.",
-      th:"กรุณาอย่าไปไหนนะครับ/ค่ะ เราจะเรียกคุณในไม่ช้า",
-      id:"Mohon jangan pergi. Kami akan segera memanggil Anda." },
+    { zh:"抱歉讓您久等，大約還需要[X]分鐘。", en:"I'm sorry for the wait. It will be about [X] more minutes.", fil:"Paumanhin sa paghihintay. Mga [X] pang minuto.", vi:"Xin lỗi vì đã để bạn chờ. Còn khoảng [X] phút nữa.", th:"ขอโทษที่ต้องรอนานครับ/ค่ะ อีกประมาณ [X] นาที", id:"Maaf atas penantiannya. Sekitar [X] menit lagi." },
+    { zh:"醫師目前正在看其他病患。", en:"The doctor is currently with another patient.", fil:"Ang doktor ay kasalukuyang kasama ang ibang pasyente.", vi:"Bác sĩ hiện đang khám cho bệnh nhân khác.", th:"ขณะนี้แพทย์กำลังดูแลผู้ป่วยรายอื่นอยู่ครับ/ค่ะ", id:"Dokter sedang menangani pasien lain saat ini." },
+    { zh:"您前面還有[人數]位病患。", en:"There are [number] patients ahead of you.", fil:"May [number] pang pasyente bago ka.", vi:"Còn [số] bệnh nhân trước bạn.", th:"ยังมีผู้ป่วยอีก [จำนวน] คนก่อนถึงคุณครับ/ค่ะ", id:"Masih ada [jumlah] pasien di depan Anda." },
+    { zh:"請在候診區等候，我們會叫您的名字。", en:"Please wait in the waiting area. We will call your name.", fil:"Mangyaring maghintay sa waiting area. Tatawagin namin ang iyong pangalan.", vi:"Vui lòng chờ ở khu vực chờ. Chúng tôi sẽ gọi tên bạn.", th:"กรุณารอในบริเวณรอครับ/ค่ะ เราจะเรียกชื่อคุณ", id:"Mohon tunggu di ruang tunggu. Kami akan memanggil nama Anda." },
+    { zh:"請不要離開，我們很快就會叫到您。", en:"Please do not leave. We will call you soon.", fil:"Mangyaring huwag umalis. Tatawagin ka namin sa lalong madaling panahon.", vi:"Vui lòng đừng rời đi. Chúng tôi sẽ gọi bạn sớm thôi.", th:"กรุณาอย่าไปไหนนะครับ/ค่ะ เราจะเรียกคุณในไม่ช้า", id:"Mohon jangan pergi. Kami akan segera memanggil Anda." },
   ]},
   { cat:"費用 / 付款", icon:"💳", phrases:[
-    { zh:"您今天的部分負擔是[金額]元。",
-      en:"Your co-payment today is [amount] NT dollars.",
-      fil:"Ang iyong co-payment ngayon ay [halaga] NT dollars.",
-      vi:"Số tiền đồng chi trả của bạn hôm nay là [số tiền] NT.",
-      th:"ค่าใช้จ่ายร่วมของคุณวันนี้คือ [จำนวน] ดอลลาร์ไต้หวันครับ/ค่ะ",
-      id:"Biaya iuran Anda hari ini adalah [jumlah] dolar NT." },
-    { zh:"我們接受現金和信用卡付款。",
-      en:"We accept cash and credit cards.",
-      fil:"Tinatanggap namin ang cash at credit cards.",
-      vi:"Chúng tôi chấp nhận tiền mặt và thẻ tín dụng.",
-      th:"เรารับเงินสดและบัตรเครดิตครับ/ค่ะ",
-      id:"Kami menerima uang tunai dan kartu kredit." },
-    { zh:"您有帶健保卡嗎？",
-      en:"Do you have your National Health Insurance card?",
-      fil:"Mayroon ka bang National Health Insurance card?",
-      vi:"Bạn có mang thẻ bảo hiểm y tế quốc gia không?",
-      th:"คุณมีบัตรประกันสุขภาพแห่งชาติไหมครับ/ค่ะ?",
-      id:"Apakah Anda membawa kartu Asuransi Kesehatan Nasional?" },
-    { zh:"請在這裡簽名確認付款。",
-      en:"Please sign here to confirm payment.",
-      fil:"Mangyaring pumirma dito upang kumpirmahin ang bayad.",
-      vi:"Vui lòng ký tên ở đây để xác nhận thanh toán.",
-      th:"กรุณาเซ็นชื่อที่นี่เพื่อยืนยันการชำระเงินครับ/ค่ะ",
-      id:"Silakan tanda tangan di sini untuk konfirmasi pembayaran." },
-    { zh:"這是您的收據。",
-      en:"Here is your receipt.",
-      fil:"Ito ang iyong resibo.",
-      vi:"Đây là biên lai của bạn.",
-      th:"นี่คือใบเสร็จของคุณครับ/ค่ะ",
-      id:"Ini adalah kuitansi Anda." },
+    { zh:"您今天的部分負擔是[金額]元。", en:"Your co-payment today is [amount] NT dollars.", fil:"Ang iyong co-payment ngayon ay [halaga] NT dollars.", vi:"Số tiền đồng chi trả của bạn hôm nay là [số tiền] NT.", th:"ค่าใช้จ่ายร่วมของคุณวันนี้คือ [จำนวน] ดอลลาร์ไต้หวันครับ/ค่ะ", id:"Biaya iuran Anda hari ini adalah [jumlah] dolar NT." },
+    { zh:"我們接受現金和信用卡付款。", en:"We accept cash and credit cards.", fil:"Tinatanggap namin ang cash at credit cards.", vi:"Chúng tôi chấp nhận tiền mặt và thẻ tín dụng.", th:"เรารับเงินสดและบัตรเครดิตครับ/ค่ะ", id:"Kami menerima uang tunai dan kartu kredit." },
+    { zh:"您有帶健保卡嗎？", en:"Do you have your National Health Insurance card?", fil:"Mayroon ka bang National Health Insurance card?", vi:"Bạn có mang thẻ bảo hiểm y tế quốc gia không?", th:"คุณมีบัตรประกันสุขภาพแห่งชาติไหมครับ/ค่ะ?", id:"Apakah Anda membawa kartu Asuransi Kesehatan Nasional?" },
+    { zh:"請在這裡簽名確認付款。", en:"Please sign here to confirm payment.", fil:"Mangyaring pumirma dito upang kumpirmahin ang bayad.", vi:"Vui lòng ký tên ở đây để xác nhận thanh toán.", th:"กรุณาเซ็นชื่อที่นี่เพื่อยืนยันการชำระเงินครับ/ค่ะ", id:"Silakan tanda tangan di sini untuk konfirmasi pembayaran." },
+    { zh:"這是您的收據。", en:"Here is your receipt.", fil:"Ito ang iyong resibo.", vi:"Đây là biên lai của bạn.", th:"นี่คือใบเสร็จของคุณครับ/ค่ะ", id:"Ini adalah kuitansi Anda." },
   ]},
   { cat:"藥局 / 領藥", icon:"💊", phrases:[
-    { zh:"請將這張處方箋交給藥局。",
-      en:"Please bring this prescription to the pharmacy.",
-      fil:"Mangyaring dalhin ang reseta na ito sa parmasya.",
-      vi:"Vui lòng mang đơn thuốc này đến nhà thuốc.",
-      th:"กรุณานำใบสั่งยานี้ไปที่ร้านยาครับ/ค่ะ",
-      id:"Mohon bawa resep ini ke apotek." },
-    { zh:"藥局在一樓。",
-      en:"The pharmacy is on the first floor.",
-      fil:"Ang parmasya ay nasa unang palapag.",
-      vi:"Nhà thuốc ở tầng một.",
-      th:"ร้านยาอยู่ที่ชั้นหนึ่งครับ/ค่ะ",
-      id:"Apotek berada di lantai satu." },
-    { zh:"這個藥請每天服用[一/兩/三]次。",
-      en:"Please take this medicine once / twice / three times a day.",
-      fil:"Inumin ang gamot na ito nang isang beses / dalawang beses / tatlong beses sa isang araw.",
-      vi:"Vui lòng uống thuốc này một / hai / ba lần mỗi ngày.",
-      th:"กรุณารับประทานยานี้วันละ 1 / 2 / 3 ครั้งครับ/ค่ะ",
-      id:"Mohon minum obat ini satu / dua / tiga kali sehari." },
-    { zh:"請飯後服藥。",
-      en:"Take the medicine after meals.",
-      fil:"Inumin ang gamot pagkatapos kumain.",
-      vi:"Uống thuốc sau bữa ăn.",
-      th:"รับประทานยาหลังอาหารครับ/ค่ะ",
-      id:"Minum obat setelah makan." },
-    { zh:"您的藥已準備好，請到[號碼]號窗口領取。",
-      en:"Your medicine is ready. Please come to counter [number].",
-      fil:"Handa na ang iyong gamot. Mangyaring pumunta sa counter [number].",
-      vi:"Thuốc của bạn đã sẵn sàng. Vui lòng đến quầy số [số].",
-      th:"ยาของคุณพร้อมแล้ว กรุณามาที่เคาน์เตอร์ [หมายเลข] ครับ/ค่ะ",
-      id:"Obat Anda sudah siap. Silakan ke loket nomor [nomor]." },
+    { zh:"請將這張處方箋交給藥局。", en:"Please bring this prescription to the pharmacy.", fil:"Mangyaring dalhin ang reseta na ito sa parmasya.", vi:"Vui lòng mang đơn thuốc này đến nhà thuốc.", th:"กรุณานำใบสั่งยานี้ไปที่ร้านยาครับ/ค่ะ", id:"Mohon bawa resep ini ke apotek." },
+    { zh:"藥局在一樓。", en:"The pharmacy is on the first floor.", fil:"Ang parmasya ay nasa unang palapag.", vi:"Nhà thuốc ở tầng một.", th:"ร้านยาอยู่ที่ชั้นหนึ่งครับ/ค่ะ", id:"Apotek berada di lantai satu." },
+    { zh:"這個藥請每天服用[一/兩/三]次。", en:"Please take this medicine once / twice / three times a day.", fil:"Inumin ang gamot na ito nang isang beses / dalawang beses / tatlong beses sa isang araw.", vi:"Vui lòng uống thuốc này một / hai / ba lần mỗi ngày.", th:"กรุณารับประทานยานี้วันละ 1 / 2 / 3 ครั้งครับ/ค่ะ", id:"Mohon minum obat ini satu / dua / tiga kali sehari." },
+    { zh:"請飯後服藥。", en:"Take the medicine after meals.", fil:"Inumin ang gamot pagkatapos kumain.", vi:"Uống thuốc sau bữa ăn.", th:"รับประทานยาหลังอาหารครับ/ค่ะ", id:"Minum obat setelah makan." },
+    { zh:"您的藥已準備好，請到[號碼]號窗口領取。", en:"Your medicine is ready. Please come to counter [number].", fil:"Handa na ang iyong gamot. Mangyaring pumunta sa counter [number].", vi:"Thuốc của bạn đã sẵn sàng. Vui lòng đến quầy số [số].", th:"ยาของคุณพร้อมแล้ว กรุณามาที่เคาน์เตอร์ [หมายเลข] ครับ/ค่ะ", id:"Obat Anda sudah siap. Silakan ke loket nomor [nomor]." },
   ]},
   { cat:"轉介 / 預約", icon:"📅", phrases:[
-    { zh:"您需要預約下次回診嗎？",
-      en:"Would you like to make a follow-up appointment?",
-      fil:"Gusto mo bang gumawa ng follow-up appointment?",
-      vi:"Bạn có muốn đặt lịch tái khám không?",
-      th:"คุณต้องการนัดติดตามผลไหมครับ/ค่ะ?",
-      id:"Apakah Anda ingin membuat janji tindak lanjut?" },
-    { zh:"您的下次回診是[日期][時間]。",
-      en:"Your next appointment is on [date] at [time].",
-      fil:"Ang iyong susunod na appointment ay sa [petsa] ng [oras].",
-      vi:"Lịch hẹn tiếp theo của bạn là ngày [ngày] lúc [giờ].",
-      th:"นัดครั้งต่อไปของคุณคือวันที่ [วันที่] เวลา [เวลา] ครับ/ค่ะ",
-      id:"Janji berikutnya adalah pada [tanggal] pukul [waktu]." },
-    { zh:"您需要看專科醫師，我會為您轉診。",
-      en:"You need to see a specialist. I will refer you.",
-      fil:"Kailangan mong makita ang isang espesyalista. Irerefer kita.",
-      vi:"Bạn cần gặp bác sĩ chuyên khoa. Tôi sẽ chuyển bạn.",
-      th:"คุณต้องพบแพทย์เฉพาะทาง เราจะส่งต่อให้คุณครับ/ค่ะ",
-      id:"Anda perlu menemui dokter spesialis. Saya akan merujuk Anda." },
-    { zh:"如需改期，請撥打[電話號碼]。",
-      en:"Please call us at [phone number] to reschedule.",
-      fil:"Mangyaring tawagan kami sa [phone number] para mag-reschedule.",
-      vi:"Vui lòng gọi cho chúng tôi theo số [số điện thoại] để đặt lại lịch.",
-      th:"กรุณาโทรหาเราที่ [หมายเลขโทรศัพท์] เพื่อเปลี่ยนนัดครับ/ค่ะ",
-      id:"Harap hubungi kami di [nomor telepon] untuk menjadwalkan ulang." },
+    { zh:"您需要預約下次回診嗎？", en:"Would you like to make a follow-up appointment?", fil:"Gusto mo bang gumawa ng follow-up appointment?", vi:"Bạn có muốn đặt lịch tái khám không?", th:"คุณต้องการนัดติดตามผลไหมครับ/ค่ะ?", id:"Apakah Anda ingin membuat janji tindak lanjut?" },
+    { zh:"您的下次回診是[日期][時間]。", en:"Your next appointment is on [date] at [time].", fil:"Ang iyong susunod na appointment ay sa [petsa] ng [oras].", vi:"Lịch hẹn tiếp theo của bạn là ngày [ngày] lúc [giờ].", th:"นัดครั้งต่อไปของคุณคือวันที่ [วันที่] เวลา [เวลา] ครับ/ค่ะ", id:"Janji berikutnya adalah pada [tanggal] pukul [waktu]." },
+    { zh:"您需要看專科醫師，我會為您轉診。", en:"You need to see a specialist. I will refer you.", fil:"Kailangan mong makita ang isang espesyalista. Irerefer kita.", vi:"Bạn cần gặp bác sĩ chuyên khoa. Tôi sẽ chuyển bạn.", th:"คุณต้องพบแพทย์เฉพาะทาง เราจะส่งต่อให้คุณครับ/ค่ะ", id:"Anda perlu menemui dokter spesialis. Saya akan merujuk Anda." },
+    { zh:"如需改期，請撥打[電話號碼]。", en:"Please call us at [phone number] to reschedule.", fil:"Mangyaring tawagan kami sa [phone number] para mag-reschedule.", vi:"Vui lòng gọi cho chúng tôi theo số [số điện thoại] để đặt lại lịch.", th:"กรุณาโทรหาเราที่ [หมายเลขโทรศัพท์] เพื่อเปลี่ยนนัดครับ/ค่ะ", id:"Harap hubungi kami di [nomor telepon] untuk menjadwalkan ulang." },
   ]},
   { cat:"指引 / 方向", icon:"🗺️", phrases:[
-    { zh:"電梯在那邊，您的左側/右側。",
-      en:"The elevator is over there, to your left / right.",
-      fil:"Ang elevator ay nandoon, sa iyong kaliwa / kanan.",
-      vi:"Thang máy ở phía đó, bên trái / phải của bạn.",
-      th:"ลิฟต์อยู่ที่นั่น ทางซ้าย/ขวาของคุณครับ/ค่ะ",
-      id:"Lift ada di sana, di sebelah kiri / kanan Anda." },
-    { zh:"廁所在走廊的盡頭。",
-      en:"The restroom is at the end of the hallway.",
-      fil:"Ang banyo ay nasa dulo ng hallway.",
-      vi:"Nhà vệ sinh ở cuối hành lang.",
-      th:"ห้องน้ำอยู่ที่ปลายทางเดินครับ/ค่ะ",
-      id:"Toilet berada di ujung koridor." },
-    { zh:"請到二樓。",
-      en:"Please go to the second floor.",
-      fil:"Mangyaring pumunta sa ikalawang palapag.",
-      vi:"Vui lòng lên tầng hai.",
-      th:"กรุณาไปที่ชั้นสองครับ/ค่ะ",
-      id:"Silakan pergi ke lantai dua." },
-    { zh:"請跟著指示牌走。",
-      en:"Please follow the signs.",
-      fil:"Mangyaring sundan ang mga palatandaan.",
-      vi:"Vui lòng đi theo biển chỉ dẫn.",
-      th:"กรุณาทำตามป้ายบอกทางครับ/ค่ะ",
-      id:"Silakan ikuti petunjuk arah." },
-    { zh:"X光室在B棟。",
-      en:"The X-ray room is in building B.",
-      fil:"Ang X-ray room ay nasa gusali B.",
-      vi:"Phòng X-quang ở tòa nhà B.",
-      th:"ห้องเอกซเรย์อยู่ในอาคาร B ครับ/ค่ะ",
-      id:"Ruang X-ray ada di gedung B." },
+    { zh:"電梯在那邊，您的左側/右側。", en:"The elevator is over there, to your left / right.", fil:"Ang elevator ay nandoon, sa iyong kaliwa / kanan.", vi:"Thang máy ở phía đó, bên trái / phải của bạn.", th:"ลิฟต์อยู่ที่นั่น ทางซ้าย/ขวาของคุณครับ/ค่ะ", id:"Lift ada di sana, di sebelah kiri / kanan Anda." },
+    { zh:"廁所在走廊的盡頭。", en:"The restroom is at the end of the hallway.", fil:"Ang banyo ay nasa dulo ng hallway.", vi:"Nhà vệ sinh ở cuối hành lang.", th:"ห้องน้ำอยู่ที่ปลายทางเดินครับ/ค่ะ", id:"Toilet berada di ujung koridor." },
+    { zh:"請到二樓。", en:"Please go to the second floor.", fil:"Mangyaring pumunta sa ikalawang palapag.", vi:"Vui lòng lên tầng hai.", th:"กรุณาไปที่ชั้นสองครับ/ค่ะ", id:"Silakan pergi ke lantai dua." },
+    { zh:"請跟著指示牌走。", en:"Please follow the signs.", fil:"Mangyaring sundan ang mga palatandaan.", vi:"Vui lòng đi theo biển chỉ dẫn.", th:"กรุณาทำตามป้ายบอกทางครับ/ค่ะ", id:"Silakan ikuti petunjuk arah." },
+    { zh:"X光室在B棟。", en:"The X-ray room is in building B.", fil:"Ang X-ray room ay nasa gusali B.", vi:"Phòng X-quang ở tòa nhà B.", th:"ห้องเอกซเรย์อยู่ในอาคาร B ครับ/ค่ะ", id:"Ruang X-ray ada di gedung B." },
   ]},
 ];
 
+// ── State ─────────────────────────────────────────────────────────────────────
 let activeLang = 'en';
 let activeTab  = 'all';
 const colors     = ['cat-0','cat-1','cat-2','cat-3','cat-4','cat-5','cat-6'];
 const iconColors = ['icon-0','icon-1','icon-2','icon-3','icon-4','icon-5','icon-6'];
 
-function setLang(lang, el) {
-  activeLang = lang;
-  document.querySelectorAll('.lang-btn').forEach(b => {
-    b.className = 'lang-btn';
-  });
-  el.className = 'lang-btn active-' + lang;
-  renderContent(document.getElementById('searchInput').value);
+// Build a stable key for each phrase using its Chinese text
+function phraseKey(p) { return 'pin_' + p.zh; }
+
+// ── Pin storage (localStorage) ────────────────────────────────────────────────
+function getPinned() {
+  try { return JSON.parse(localStorage.getItem('hospital_pins') || '[]'); }
+  catch { return []; }
+}
+function savePinned(arr) {
+  try { localStorage.setItem('hospital_pins', JSON.stringify(arr)); } catch {}
+}
+function isPinned(p) { return getPinned().includes(phraseKey(p)); }
+function togglePin(p) {
+  let pins = getPinned();
+  const k  = phraseKey(p);
+  if (pins.includes(k)) { pins = pins.filter(x => x !== k); }
+  else                  { pins.push(k); }
+  savePinned(pins);
 }
 
+// ── Lang ──────────────────────────────────────────────────────────────────────
+function setLang(lang, el) {
+  activeLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.className = 'lang-btn');
+  el.className = 'lang-btn active-' + lang;
+  render();
+}
+
+// ── Tabs ──────────────────────────────────────────────────────────────────────
 function renderTabs() {
   const c = document.getElementById('tabsContainer');
-  c.innerHTML = `<div class="tab active" onclick="setTab('all',this)">全部</div>`
-    + data.map((d,i) => `<div class="tab" onclick="setTab(${i},this)">${d.icon} ${d.cat.split('/')[0].trim()}</div>`).join('');
+  c.innerHTML =
+    `<div class="tab pin-tab ${activeTab==='pinned'?'active':''}" onclick="setTab('pinned',this)">⭐ 釘選</div>` +
+    `<div class="tab ${activeTab==='all'?'active':''}" onclick="setTab('all',this)">全部</div>` +
+    data.map((d,i) =>
+      `<div class="tab ${activeTab===i?'active':''}" onclick="setTab(${i},this)">${d.icon} ${d.cat.split('/')[0].trim()}</div>`
+    ).join('');
 }
 
 function setTab(idx, el) {
   activeTab = idx;
   document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
-  renderContent(document.getElementById('searchInput').value);
+  render();
 }
 
-function esc(s) {
-  return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'");
-}
+// ── Card builder ──────────────────────────────────────────────────────────────
+function esc(s) { return String(s).replace(/\\/g,'\\\\').replace(/'/g,"\\'"); }
 
-function buildCard(phrase, catIdx) {
-  const meta = langMeta[activeLang];
+function buildCard(phrase, catIdx, inPinnedSection) {
+  const meta     = langMeta[activeLang];
   const mainText = phrase[activeLang] || phrase.en;
-  const safeMain = esc(mainText);
-  const safeLang = esc(activeLang);
-  return `<div class="phrase-card ${colors[catIdx % colors.length]}">
+  const pinned   = isPinned(phrase);
+  const pinIcon  = pinned ? '📌' : '📍';
+  const pinClass = pinned ? 'pin-btn pinned' : 'pin-btn';
+  const cardCls  = inPinnedSection ? 'phrase-card pinned-card' : `phrase-card ${colors[catIdx % colors.length]}${pinned ? ' is-pinned' : ''}`;
+  const dataIdx  = `data-sec="${catIdx}" data-zh="${esc(phrase.zh)}"`;
+
+  return `<div class="${cardCls}">
     <div class="btn-row">
-      <button class="action-btn" onclick="speak(this,'${safeMain}','${safeLang}')">🔊</button>
-      <button class="action-btn" onclick="copyText(this,'${safeMain}')">📋</button>
+      <button class="action-btn ${pinClass}" title="${pinned?'取消釘選':'釘選'}" onclick="handlePin(this,'${esc(phrase.zh)}')">${pinIcon}</button>
+      <button class="action-btn" title="朗讀" onclick="speak(this,'${esc(mainText)}','${activeLang}')">🔊</button>
+      <button class="action-btn" title="複製" onclick="copyText(this,'${esc(mainText)}')">📋</button>
     </div>
     <span class="lang-badge ${meta.badge}">${meta.flag} ${meta.label}</span>
     <div class="phrase-main">${mainText}</div>
@@ -531,11 +366,89 @@ function buildCard(phrase, catIdx) {
   </div>`;
 }
 
-function renderContent(query='') {
+// Find a phrase object by its Chinese text
+function findPhrase(zh) {
+  for (const sec of data) {
+    for (const p of sec.phrases) {
+      if (p.zh === zh) return p;
+    }
+  }
+  return null;
+}
+
+function handlePin(btn, zh) {
+  const phrase = findPhrase(zh);
+  if (!phrase) return;
+  togglePin(phrase);
+  const pinned = isPinned(phrase);
+  btn.textContent = pinned ? '📌' : '📍';
+  btn.className   = pinned ? 'action-btn pin-btn pinned' : 'action-btn pin-btn';
+  btn.title       = pinned ? '取消釘選' : '釘選';
+  // update card border
+  const card = btn.closest('.phrase-card');
+  if (card) { pinned ? card.classList.add('is-pinned') : card.classList.remove('is-pinned'); }
+  showToast(pinned ? '⭐ 已釘選！' : '取消釘選');
+  renderPinned();
+}
+
+// ── Pinned section ────────────────────────────────────────────────────────────
+function renderPinned() {
+  const container = document.getElementById('pinnedSection');
+  if (activeTab === 'pinned') { container.innerHTML = ''; return; } // shown in main content
+
+  const pins = getPinned();
+  if (pins.length === 0) { container.innerHTML = ''; return; }
+
+  const pinnedPhrases = pins.map(k => {
+    const zh = k.replace(/^pin_/, '');
+    return findPhrase(zh);
+  }).filter(Boolean);
+
+  if (pinnedPhrases.length === 0) { container.innerHTML = ''; return; }
+
+  container.innerHTML = `
+    <div class="pinned-section">
+      <div class="pinned-header">
+        <div class="pinned-title">⭐ 我的釘選</div>
+        <div class="pinned-count">${pinnedPhrases.length} 句</div>
+      </div>
+      ${pinnedPhrases.map(p => buildCard(p, 0, true)).join('')}
+    </div>
+    <div class="divider"></div>`;
+}
+
+// ── Main content ──────────────────────────────────────────────────────────────
+function renderContent(query = '') {
   const container = document.getElementById('content');
-  let html='', found=0;
   const q = query.toLowerCase();
-  data.forEach((section,i) => {
+
+  // ── Pinned tab ──
+  if (activeTab === 'pinned') {
+    const pins = getPinned();
+    const pinnedPhrases = pins.map(k => findPhrase(k.replace(/^pin_/, ''))).filter(Boolean);
+    const filtered = q
+      ? pinnedPhrases.filter(p => (p[activeLang]||p.en).toLowerCase().includes(q) || p.zh.includes(query))
+      : pinnedPhrases;
+
+    if (filtered.length === 0) {
+      container.innerHTML = `<div class="no-result">⭐ 還沒有釘選的句子<br><span style="font-size:0.8rem;opacity:0.6">點每張卡片上的 📍 即可釘選</span></div>`;
+      return;
+    }
+    container.innerHTML = `
+      <div class="section">
+        <div class="section-header">
+          <div class="section-icon" style="background:#fef3c7">⭐</div>
+          <div class="section-title">我的釘選</div>
+          <div class="section-count">${filtered.length} 句</div>
+        </div>
+        ${filtered.map(p => buildCard(p, 0, true)).join('')}
+      </div>`;
+    return;
+  }
+
+  // ── Normal tabs ──
+  let html = '', found = 0;
+  data.forEach((section, i) => {
     if (activeTab !== 'all' && activeTab !== i) return;
     const filtered = q
       ? section.phrases.filter(p => (p[activeLang]||p.en).toLowerCase().includes(q) || p.zh.includes(query))
@@ -548,41 +461,52 @@ function renderContent(query='') {
         <div class="section-title">${section.cat}</div>
         <div class="section-count">${filtered.length} 句</div>
       </div>
-      ${filtered.map(p => buildCard(p,i)).join('')}
+      ${filtered.map(p => buildCard(p, i, false)).join('')}
     </div><div class="divider"></div>`;
   });
   container.innerHTML = found ? html : `<div class="no-result">😕 找不到相關句子，請嘗試其他關鍵字</div>`;
 }
 
-function filterPhrases(q) { renderContent(q); }
+function render() {
+  renderTabs();
+  renderPinned();
+  renderContent(document.getElementById('searchInput').value);
+}
 
+function filterPhrases(q) {
+  renderPinned();
+  renderContent(q);
+}
+
+// ── Actions ───────────────────────────────────────────────────────────────────
 function copyText(btn, text) {
   navigator.clipboard.writeText(text).then(() => {
-    btn.classList.add('copied'); btn.textContent='✅';
+    btn.classList.add('copied'); btn.textContent = '✅';
     showToast('已複製！');
-    setTimeout(()=>{ btn.classList.remove('copied'); btn.textContent='📋'; },1800);
+    setTimeout(() => { btn.classList.remove('copied'); btn.textContent = '📋'; }, 1800);
   });
 }
 
 function speak(btn, text, lang) {
   if (!('speechSynthesis' in window)) { showToast('此裝置不支援語音'); return; }
   window.speechSynthesis.cancel();
-  btn.classList.add('speaking'); btn.textContent='🔈';
+  btn.classList.add('speaking'); btn.textContent = '🔈';
   const u = new SpeechSynthesisUtterance(text);
   u.lang = langMeta[lang]?.tts || 'en-US';
   u.rate = 0.88;
-  u.onend = () => { btn.classList.remove('speaking'); btn.textContent='🔊'; };
+  u.onend = () => { btn.classList.remove('speaking'); btn.textContent = '🔊'; };
   window.speechSynthesis.speak(u);
 }
 
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),1800);
+  setTimeout(() => t.classList.remove('show'), 1800);
 }
 
-renderTabs();
-renderContent();
+// ── Init ──────────────────────────────────────────────────────────────────────
+render();
 </script>
+
 </body>
 </html>
